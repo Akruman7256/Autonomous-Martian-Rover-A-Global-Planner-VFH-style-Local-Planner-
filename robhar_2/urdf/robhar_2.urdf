@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- robhar_2.urdf from SW2URDF, patched: masses, inertias, wheel axes, primitive collisions, sensor frames, wheel friction -->
+<robot name="robhar_2">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="1.47899105337068E-15 -1.1116918404485E-14 -8.75580097651851E-05" rpy="0 0 0" />
+      <mass value="8" />
+      <inertia ixx="0.133396" ixy="0" ixz="0" iyy="0.271964" iyz="0" izz="0.357723" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.6 0.4 0.12" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="wheel_fl">
+    <inertial>
+      <origin xyz="0 1.5414E-05 -6.9389E-18" rpy="0 0 0" />
+      <mass value="0.8" />
+      <inertia ixx="0.00379167" ixy="0" ixz="0" iyy="0.00625" iyz="0" izz="0.00379167" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/wheel_fl.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.125" length="0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_fl_joint" type="continuous">
+    <origin xyz="0.26 0.25 -0.055" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="wheel_fl" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <link name="wheel_fr">
+    <inertial>
+      <origin xyz="-5.5511E-17 -1.5414E-05 -6.9389E-18" rpy="0 0 0" />
+      <mass value="0.8" />
+      <inertia ixx="0.00379167" ixy="0" ixz="0" iyy="0.00625" iyz="0" izz="0.00379167" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/wheel_fr.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.125" length="0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_fr_joint" type="continuous">
+    <origin xyz="0.26 -0.25 -0.055" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="wheel_fr" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <link name="wheel_rl">
+    <inertial>
+      <origin xyz="5.5511E-17 1.5414E-05 0" rpy="0 0 0" />
+      <mass value="0.8" />
+      <inertia ixx="0.00379167" ixy="0" ixz="0" iyy="0.00625" iyz="0" izz="0.00379167" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/wheel_rl.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.125" length="0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_rl_joint" type="continuous">
+    <origin xyz="-0.26 0.25 -0.055" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="wheel_rl" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <link name="wheel_rr">
+    <inertial>
+      <origin xyz="0 -1.5414E-05 0" rpy="0 0 0" />
+      <mass value="0.8" />
+      <inertia ixx="0.00379167" ixy="0" ixz="0" iyy="0.00625" iyz="0" izz="0.00379167" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/wheel_rr.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.125" length="0.1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_rr_joint" type="continuous">
+    <origin xyz="-0.26 -0.25 -0.055" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="wheel_rr" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <link name="lidar_level">
+    <inertial>
+      <origin xyz="9.7717E-19 0 0.053132" rpy="0 0 0" />
+      <mass value="0.20185" />
+      <inertia ixx="0.00011434" ixy="1.333E-37" ixz="-3.8123E-21" iyy="0.00011434" iyz="-3.3363E-37" izz="0.00011833" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/lidar_level.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/lidar_level.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="lidar_level_joint" type="fixed">
+    <origin xyz="0 0 0.06" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="lidar_level" />
+  </joint>
+  <link name="camera_left">
+    <inertial>
+      <origin xyz="0.012464 -7.827E-05 0" rpy="0 0 0" />
+      <mass value="0.067299" />
+      <inertia ixx="5.048E-05" ixy="6.3399E-08" ixz="-2.6652E-22" iyy="8.5459E-06" iyz="-1.9462E-20" izz="4.8907E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/camera_left.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/camera_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="camera_left_joint" type="fixed">
+    <origin xyz="0.275 0.155 0.075" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="camera_left" />
+  </joint>
+  <link name="camera_right">
+    <inertial>
+      <origin xyz="0.012464 7.827E-05 0" rpy="0 0 0" />
+      <mass value="0.067299" />
+      <inertia ixx="5.048E-05" ixy="-6.3399E-08" ixz="3.3356E-22" iyy="8.5459E-06" iyz="2.5594E-21" izz="4.8907E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/camera_right.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robhar_2/meshes/camera_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="camera_right_joint" type="fixed">
+    <origin xyz="0.275 -0.155 0.075" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="camera_right" />
+  </joint>
+  <link name="lidar_level_scan" />
+  <joint name="lidar_level_scan_joint" type="fixed">
+    <origin xyz="0 0 0.055" rpy="0 0 0" />
+    <parent link="lidar_level" />
+    <child link="lidar_level_scan" />
+  </joint>
+  <link name="camera_left_lens" />
+  <joint name="camera_left_lens_joint" type="fixed">
+    <origin xyz="0.025 0 0" rpy="0 0 0" />
+    <parent link="camera_left" />
+    <child link="camera_left_lens" />
+  </joint>
+  <link name="camera_right_lens" />
+  <joint name="camera_right_lens_joint" type="fixed">
+    <origin xyz="0.025 0 0" rpy="0 0 0" />
+    <parent link="camera_right" />
+    <child link="camera_right_lens" />
+  </joint>
+  <gazebo reference="wheel_fl">
+    <mu1>1.0</mu1>
+    <mu2>0.8</mu2>
+  </gazebo>
+  <gazebo reference="wheel_fr">
+    <mu1>1.0</mu1>
+    <mu2>0.8</mu2>
+  </gazebo>
+  <gazebo reference="wheel_rl">
+    <mu1>1.0</mu1>
+    <mu2>0.8</mu2>
+  </gazebo>
+  <gazebo reference="wheel_rr">
+    <mu1>1.0</mu1>
+    <mu2>0.8</mu2>
+  </gazebo>
+</robot>

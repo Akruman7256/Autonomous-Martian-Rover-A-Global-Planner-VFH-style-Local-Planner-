@@ -1,0 +1,4195 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>2000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <gravity>0 0 -3.72</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <ode>
+        <solver>
+          <iters>100</iters>
+          <type>quick</type>
+          <sor>1.3</sor>
+          <use_dynamic_moi_rescaling>0</use_dynamic_moi_rescaling>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>100</contact_max_correcting_vel>
+          <contact_surface_layer>0.001</contact_surface_layer>
+        </constraints>
+      </ode>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='mars_terrain'>
+      <static>1</static>
+      <link name='terrain'>
+        <collision name='terrain_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/rover_project/worlds/nasa_jpl/mars_terrain/meshes/mars_terrain.obj</uri>
+              <scale>1 2 1</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>20</mu>
+                <mu2>20</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='terrain_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/rover_project/worlds/nasa_jpl/mars_terrain/meshes/mars_terrain.obj</uri>
+              <scale>1 2 1</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.45 0.2 0.1 1</ambient>
+            <diffuse>0.65 0.3 0.15 1</diffuse>
+            <specular>0.05 0.05 0.05 1</specular>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0 0 -0.5 1.57 -0 0</pose>
+    </model>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-16.7568 -5.87787 7.65187 0 0.249798 0.197594</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name='martian_rock_00'>
+      <static>1</static>
+      <pose>270.811 -60.4148 -11.7866 0 -0 -0.153185</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_0_col.stl</uri>
+              <scale>18.2765 14.8286 28.5806</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_0.obj</uri>
+              <scale>18.2765 14.8286 28.5806</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_01'>
+      <static>1</static>
+      <pose>258.141 282.799 -1.608 0 -0 -0.460185</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_1_col.stl</uri>
+              <scale>2.85289 2.77594 4.83478</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_1.obj</uri>
+              <scale>2.85289 2.77594 4.83478</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_02'>
+      <static>1</static>
+      <pose>142.213 319.076 4.8136 0 -0 0.401</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_2_col.stl</uri>
+              <scale>6.94699 7.78082 12.7363</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_2.obj</uri>
+              <scale>6.94699 7.78082 12.7363</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_03'>
+      <static>1</static>
+      <pose>323.869 130.165 -27.7935 0 -0 -0.671585</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_3_col.stl</uri>
+              <scale>2.28362 2.77656 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_3.obj</uri>
+              <scale>2.28362 2.77656 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_04'>
+      <static>1</static>
+      <pose>275.187 -301.86 -14.1966 0 -0 -1.99148</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_4_col.stl</uri>
+              <scale>11.3016 11.7925 22.214</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_4.obj</uri>
+              <scale>11.3016 11.7925 22.214</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_05'>
+      <static>1</static>
+      <pose>241.952 462.168 13.4687 0 -0 1.1905</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_5_col.stl</uri>
+              <scale>2.29637 2.37564 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_5.obj</uri>
+              <scale>2.29637 2.37564 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_06'>
+      <static>1</static>
+      <pose>-365.829 -24.0097 7.196 0 -0 -1.05129</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_6_col.stl</uri>
+              <scale>2.53585 2.34972 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_6.obj</uri>
+              <scale>2.53585 2.34972 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_07'>
+      <static>1</static>
+      <pose>197.966 -185.479 -10.4867 0 -0 1.8116</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_7_col.stl</uri>
+              <scale>2.64381 2.30998 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_7.obj</uri>
+              <scale>2.64381 2.30998 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_08'>
+      <static>1</static>
+      <pose>180.4 -356.118 -9.3773 0 -0 -2.10579</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_8_col.stl</uri>
+              <scale>7.52209 9.86077 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_8.obj</uri>
+              <scale>7.52209 9.86077 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_09'>
+      <static>1</static>
+      <pose>-381.044 166.484 11.6813 0 -0 -2.29508</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_9_col.stl</uri>
+              <scale>9.19571 9.795 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_9.obj</uri>
+              <scale>9.19571 9.795 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_10'>
+      <static>1</static>
+      <pose>52.9642 58.5372 -0.5115 0 -0 1.3483</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_10_col.stl</uri>
+              <scale>7.59245 8.81015 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_10.obj</uri>
+              <scale>7.59245 8.81015 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_11'>
+      <static>1</static>
+      <pose>-90.4211 349.367 7.4838 0 -0 1.8447</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_11_col.stl</uri>
+              <scale>2.04664 2.22511 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_11.obj</uri>
+              <scale>2.04664 2.22511 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_12'>
+      <static>1</static>
+      <pose>160.057 56.387 -3.3524 0 -0 -1.16858</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_12_col.stl</uri>
+              <scale>4.34496 3.99079 6.86556</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_12.obj</uri>
+              <scale>4.34496 3.99079 6.86556</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_13'>
+      <static>1</static>
+      <pose>-329.203 -471.82 1.0843 0 -0 1.0133</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_13_col.stl</uri>
+              <scale>2.57789 2.3695 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_13.obj</uri>
+              <scale>2.57789 2.3695 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_14'>
+      <static>1</static>
+      <pose>1.0328 -343.702 0.9059 0 -0 1.8945</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_14_col.stl</uri>
+              <scale>7.19628 7.03718 12.213</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_14.obj</uri>
+              <scale>7.19628 7.03718 12.213</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_15'>
+      <static>1</static>
+      <pose>128.787 -136.599 -10.2056 0 -0 -0.574385</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_15_col.stl</uri>
+              <scale>2.0944 2.76952 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_15.obj</uri>
+              <scale>2.0944 2.76952 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_16'>
+      <static>1</static>
+      <pose>197.414 -231.444 -11.2899 0 -0 2.8234</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_16_col.stl</uri>
+              <scale>10.2538 10.0603 15.6367</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_16.obj</uri>
+              <scale>10.2538 10.0603 15.6367</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_17'>
+      <static>1</static>
+      <pose>-225.143 -398.984 1.3838 0 -0 1.9224</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_17_col.stl</uri>
+              <scale>2.36462 2.16189 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_17.obj</uri>
+              <scale>2.36462 2.16189 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_18'>
+      <static>1</static>
+      <pose>78.31 -319.522 -1.5108 0 -0 2.7149</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_18_col.stl</uri>
+              <scale>2.60682 2.57557 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_18.obj</uri>
+              <scale>2.60682 2.57557 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_19'>
+      <static>1</static>
+      <pose>125.847 83.1432 1.4095 0 -0 0.2615</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_19_col.stl</uri>
+              <scale>2.06756 2.33265 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_19.obj</uri>
+              <scale>2.06756 2.33265 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_20'>
+      <static>1</static>
+      <pose>-5.9402 -168.185 0.3485 0 -0 1.0719</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_20_col.stl</uri>
+              <scale>5.31515 6.30379 10.2081</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_20.obj</uri>
+              <scale>5.31515 6.30379 10.2081</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_21'>
+      <static>1</static>
+      <pose>420.239 80.1411 -34.2626 0 -0 -0.260385</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_21_col.stl</uri>
+              <scale>3.12163 2.54787 5.04969</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_21.obj</uri>
+              <scale>3.12163 2.54787 5.04969</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_22'>
+      <static>1</static>
+      <pose>-17.4934 279.508 -0.0287 0 -0 -0.390685</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_22_col.stl</uri>
+              <scale>11.3333 11.3486 18.9732</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_22.obj</uri>
+              <scale>11.3333 11.3486 18.9732</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_23'>
+      <static>1</static>
+      <pose>70.9045 -26.1998 -5.0169 0 -0 2.7578</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_23_col.stl</uri>
+              <scale>4.8368 5.15982 8.54085</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_23.obj</uri>
+              <scale>4.8368 5.15982 8.54085</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_24'>
+      <static>1</static>
+      <pose>-472.895 322.566 15.2613 0 -0 0.6822</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_24_col.stl</uri>
+              <scale>3.91325 4.52655 7.41076</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_24.obj</uri>
+              <scale>3.91325 4.52655 7.41076</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_25'>
+      <static>1</static>
+      <pose>170.262 -216.256 -9.6573 0 -0 0.677</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_25_col.stl</uri>
+              <scale>7.27362 7.36751 11.27</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_25.obj</uri>
+              <scale>7.27362 7.36751 11.27</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_26'>
+      <static>1</static>
+      <pose>411.235 -266.692 -22.5789 0 -0 -1.06949</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_26_col.stl</uri>
+              <scale>2.44388 2.29674 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_26.obj</uri>
+              <scale>2.44388 2.29674 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_27'>
+      <static>1</static>
+      <pose>304.712 -180.762 -17.4524 0 -0 1.6083</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_27_col.stl</uri>
+              <scale>9.79063 10.5769 17.5402</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_27.obj</uri>
+              <scale>9.79063 10.5769 17.5402</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_28'>
+      <static>1</static>
+      <pose>431.037 -331.547 -21.5335 0 -0 -0.680585</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_28_col.stl</uri>
+              <scale>2.34808 2.7939 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_28.obj</uri>
+              <scale>2.34808 2.7939 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_29'>
+      <static>1</static>
+      <pose>245.754 386.329 7.0242 0 -0 -1.43249</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_29_col.stl</uri>
+              <scale>2.41509 2.25274 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_29.obj</uri>
+              <scale>2.41509 2.25274 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_30'>
+      <static>1</static>
+      <pose>159.805 -124.889 -11.1092 0 -0 -0.396985</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_30_col.stl</uri>
+              <scale>7.94234 6.75757 12.2311</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_30.obj</uri>
+              <scale>7.94234 6.75757 12.2311</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_31'>
+      <static>1</static>
+      <pose>-256.055 -372.918 0.979 0 -0 -2.51719</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_31_col.stl</uri>
+              <scale>9.74943 9.84491 18.3724</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_31.obj</uri>
+              <scale>9.74943 9.84491 18.3724</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_32'>
+      <static>1</static>
+      <pose>370.262 -300.085 -20.0078 0 -0 -3.13699</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_32_col.stl</uri>
+              <scale>2.62192 2.77746 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_32.obj</uri>
+              <scale>2.62192 2.77746 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_33'>
+      <static>1</static>
+      <pose>-352.014 -480.495 -0.911 0 -0 0.7655</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_33_col.stl</uri>
+              <scale>7.89547 9.53298 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_33.obj</uri>
+              <scale>7.89547 9.53298 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_34'>
+      <static>1</static>
+      <pose>-101.246 -196.766 3.7341 0 -0 1.7998</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_34_col.stl</uri>
+              <scale>9.48859 10.3669 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_34.obj</uri>
+              <scale>9.48859 10.3669 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_35'>
+      <static>1</static>
+      <pose>419.931 -469.697 -17.2579 0 -0 0.8818</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_35_col.stl</uri>
+              <scale>5.09009 4.23241 8.12082</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_35.obj</uri>
+              <scale>5.09009 4.23241 8.12082</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_36'>
+      <static>1</static>
+      <pose>-79.957 460.905 10.9138 0 -0 2.9366</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_36_col.stl</uri>
+              <scale>10.2991 9.91308 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_36.obj</uri>
+              <scale>10.2991 9.91308 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_37'>
+      <static>1</static>
+      <pose>281.494 -476.639 -14.1994 0 -0 1.4617</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_37_col.stl</uri>
+              <scale>9.98829 9.89045 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_37.obj</uri>
+              <scale>9.98829 9.89045 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_38'>
+      <static>1</static>
+      <pose>30.4163 104.81 1.8742 0 -0 -2.18698</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_38_col.stl</uri>
+              <scale>2.42723 2.47089 4.22246</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_38.obj</uri>
+              <scale>2.42723 2.47089 4.22246</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_39'>
+      <static>1</static>
+      <pose>363.271 -45.5682 -16.788 0 -0 -1.15248</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_39_col.stl</uri>
+              <scale>8.20999 9.73804 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_39.obj</uri>
+              <scale>8.20999 9.73804 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_40'>
+      <static>1</static>
+      <pose>-390.19 -428.474 2.1446 0 -0 1.9499</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_40_col.stl</uri>
+              <scale>2.11694 2.65973 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_40.obj</uri>
+              <scale>2.11694 2.65973 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_41'>
+      <static>1</static>
+      <pose>-352.039 416.161 7.6081 0 -0 0.7256</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_41_col.stl</uri>
+              <scale>10.7616 10.2549 19.3225</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_41.obj</uri>
+              <scale>10.7616 10.2549 19.3225</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_42'>
+      <static>1</static>
+      <pose>178.64 -105.145 -9.8698 0 -0 -0.935385</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_42_col.stl</uri>
+              <scale>6.59474 7.40792 10.9747</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_42.obj</uri>
+              <scale>6.59474 7.40792 10.9747</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_43'>
+      <static>1</static>
+      <pose>-451.283 -314.85 3.5485 0 -0 2.6155</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_43_col.stl</uri>
+              <scale>8.45787 9.44795 15.3814</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_43.obj</uri>
+              <scale>8.45787 9.44795 15.3814</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_44'>
+      <static>1</static>
+      <pose>-445.571 -124.932 8.1393 0 -0 0.3265</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_44_col.stl</uri>
+              <scale>4.38623 5.61997 8.42963</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_44.obj</uri>
+              <scale>4.38623 5.61997 8.42963</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_45'>
+      <static>1</static>
+      <pose>419.964 -396.293 -18.9528 0 -0 -1.24388</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_45_col.stl</uri>
+              <scale>10.208 10.4387 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_45.obj</uri>
+              <scale>10.208 10.4387 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_46'>
+      <static>1</static>
+      <pose>276.269 140.861 -22.0758 0 -0 -3.05219</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_46_col.stl</uri>
+              <scale>2.10764 2.42885 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_46.obj</uri>
+              <scale>2.10764 2.42885 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_47'>
+      <static>1</static>
+      <pose>353.467 -36.7676 -13.0945 0 -0 0.8782</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_47_col.stl</uri>
+              <scale>2.52252 2.22275 4.01731</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_47.obj</uri>
+              <scale>2.52252 2.22275 4.01731</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_48'>
+      <static>1</static>
+      <pose>-21.8687 -82.1523 -0.0756 0 -0 2.0577</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_48_col.stl</uri>
+              <scale>8.60254 8.59918 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_48.obj</uri>
+              <scale>8.60254 8.59918 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_49'>
+      <static>1</static>
+      <pose>-119.152 183.626 5.939 0 -0 3.0216</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_49_col.stl</uri>
+              <scale>2.75909 2.73308 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_49.obj</uri>
+              <scale>2.75909 2.73308 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_50'>
+      <static>1</static>
+      <pose>-169.668 35.0368 5.2347 0 -0 -2.93599</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_50_col.stl</uri>
+              <scale>9.45776 9.91318 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_50.obj</uri>
+              <scale>9.45776 9.91318 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_51'>
+      <static>1</static>
+      <pose>131.392 -209.413 -9.189 0 -0 -0.875085</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_51_col.stl</uri>
+              <scale>8.10721 9.58439 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_51.obj</uri>
+              <scale>8.10721 9.58439 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_52'>
+      <static>1</static>
+      <pose>-363.673 113.079 9.122 0 -0 -0.402485</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_52_col.stl</uri>
+              <scale>9.67715 7.75348 15</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_52.obj</uri>
+              <scale>9.67715 7.75348 15</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_53'>
+      <static>1</static>
+      <pose>-358.429 453.637 10.1468 0 -0 -1.28729</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_53_col.stl</uri>
+              <scale>2.77556 2.94507 4.48584</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_53.obj</uri>
+              <scale>2.77556 2.94507 4.48584</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_54'>
+      <static>1</static>
+      <pose>440.906 -243.787 -23.3671 0 -0 1.0763</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_54_col.stl</uri>
+              <scale>2.07604 2.49293 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_54.obj</uri>
+              <scale>2.07604 2.49293 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_55'>
+      <static>1</static>
+      <pose>64.2049 71.6092 1.3106 0 -0 -1.26138</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_55_col.stl</uri>
+              <scale>2.41811 2.61114 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_55.obj</uri>
+              <scale>2.41811 2.61114 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_56'>
+      <static>1</static>
+      <pose>-7.7567 98.4614 2.0794 0 -0 0.5511</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_56_col.stl</uri>
+              <scale>2.09579 2.09368 4</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_56.obj</uri>
+              <scale>2.09579 2.09368 4</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_57'>
+      <static>1</static>
+      <pose>156.051 -80.453 -8.1343 0 -0 -0.638585</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_57_col.stl</uri>
+              <scale>3.47118 3.10165 5.47292</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_57.obj</uri>
+              <scale>3.47118 3.10165 5.47292</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_58'>
+      <static>1</static>
+      <pose>259.518 -226.832 -12.7711 0 -0 0.9286</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_58_col.stl</uri>
+              <scale>2.32479 2.19525 4.13011</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_58.obj</uri>
+              <scale>2.32479 2.19525 4.13011</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_59'>
+      <static>1</static>
+      <pose>431.12 -61.3781 -19.2485 0 -0 -0.401285</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_59_col.stl</uri>
+              <scale>2.62977 2.4859 4.07125</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_59.obj</uri>
+              <scale>2.62977 2.4859 4.07125</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_60'>
+      <static>1</static>
+      <pose>277.083 -20.387 -7.8353 0 -0 -0.306685</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_60_col.stl</uri>
+              <scale>3.56723 3.29214 5.11558</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_60.obj</uri>
+              <scale>3.56723 3.29214 5.11558</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_61'>
+      <static>1</static>
+      <pose>-377.141 346.53 11.6358 0 -0 -1.97229</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_61_col.stl</uri>
+              <scale>2.21504 2.60901 4.22408</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_61.obj</uri>
+              <scale>2.21504 2.60901 4.22408</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_62'>
+      <static>1</static>
+      <pose>-482.098 -45.1519 11.874 0 -0 2.7791</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_62_col.stl</uri>
+              <scale>2.58927 2.74042 4.63137</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_62.obj</uri>
+              <scale>2.58927 2.74042 4.63137</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='martian_rock_63'>
+      <static>1</static>
+      <pose>-195.798 413.662 5.2134 0 -0 -0.758985</pose>
+      <link name='link'>
+        <collision name='rock_collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_63_col.stl</uri>
+              <scale>4.53636 6.07671 8.68838</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.9</mu>
+                <mu2>0.9</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='rock_visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///workspace/martian/rocks/rock_63.obj</uri>
+              <scale>4.53636 6.07671 8.68838</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.25 0.2 0.18 1</ambient>
+            <diffuse>0.35 0.28 0.25 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <state world_name='default'>
+      <sim_time>324 95000000</sim_time>
+      <real_time>34 115955919</real_time>
+      <wall_time>1793207824 388776890</wall_time>
+      <iterations>34039</iterations>
+      <model name='mars_terrain'>
+        <pose>0 0 -0.5 1.57 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='terrain'>
+          <pose>0 0 -0.5 1.57 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_00'>
+        <pose>270.811 -60.4148 -11.7866 0 -0 -0.153185</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>270.811 -60.4148 -11.7866 0 -0 -0.153185</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_01'>
+        <pose>258.141 282.799 -1.608 0 -0 -0.460185</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>258.141 282.799 -1.608 0 -0 -0.460185</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_02'>
+        <pose>142.213 319.076 4.8136 0 -0 0.401</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>142.213 319.076 4.8136 0 -0 0.401</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_03'>
+        <pose>323.869 130.165 -27.7935 0 -0 -0.671585</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>323.869 130.165 -27.7935 0 -0 -0.671585</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_04'>
+        <pose>275.187 -301.86 -14.1966 0 -0 -1.99148</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>275.187 -301.86 -14.1966 0 -0 -1.99148</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_05'>
+        <pose>241.952 462.168 13.4687 0 -0 1.1905</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>241.952 462.168 13.4687 0 -0 1.1905</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_06'>
+        <pose>-365.829 -24.0097 7.196 0 -0 -1.05129</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-365.829 -24.0097 7.196 0 -0 -1.05129</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_07'>
+        <pose>197.966 -185.479 -10.4867 0 -0 1.8116</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>197.966 -185.479 -10.4867 0 -0 1.8116</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_08'>
+        <pose>180.4 -356.118 -9.3773 0 -0 -2.10579</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>180.4 -356.118 -9.3773 0 -0 -2.10579</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_09'>
+        <pose>-381.044 166.484 11.6813 0 -0 -2.29508</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-381.044 166.484 11.6813 0 -0 -2.29508</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_10'>
+        <pose>52.9642 58.5372 -0.5115 0 -0 1.3483</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>52.9642 58.5372 -0.5115 0 -0 1.3483</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_11'>
+        <pose>-90.4211 349.367 7.4838 0 -0 1.8447</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-90.4211 349.367 7.4838 0 -0 1.8447</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_12'>
+        <pose>160.057 56.387 -3.3524 0 -0 -1.16858</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>160.057 56.387 -3.3524 0 -0 -1.16858</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_13'>
+        <pose>-329.203 -471.82 1.0843 0 -0 1.0133</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-329.203 -471.82 1.0843 0 -0 1.0133</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_14'>
+        <pose>1.0328 -343.702 0.9059 0 -0 1.8945</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>1.0328 -343.702 0.9059 0 -0 1.8945</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_15'>
+        <pose>128.787 -136.599 -10.2056 0 -0 -0.574385</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>128.787 -136.599 -10.2056 0 -0 -0.574385</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_16'>
+        <pose>197.414 -231.444 -11.2899 0 -0 2.8234</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>197.414 -231.444 -11.2899 0 -0 2.8234</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_17'>
+        <pose>-225.143 -398.984 1.3838 0 -0 1.9224</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-225.143 -398.984 1.3838 0 -0 1.9224</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_18'>
+        <pose>78.31 -319.522 -1.5108 0 -0 2.7149</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>78.31 -319.522 -1.5108 0 -0 2.7149</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_19'>
+        <pose>125.847 83.1432 1.4095 0 -0 0.2615</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>125.847 83.1432 1.4095 0 -0 0.2615</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_20'>
+        <pose>-5.9402 -168.185 0.3485 0 -0 1.0719</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-5.9402 -168.185 0.3485 0 -0 1.0719</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_21'>
+        <pose>420.239 80.1411 -34.2626 0 -0 -0.260385</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>420.239 80.1411 -34.2626 0 -0 -0.260385</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_22'>
+        <pose>-17.4934 279.508 -0.0287 0 -0 -0.390685</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-17.4934 279.508 -0.0287 0 -0 -0.390685</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_23'>
+        <pose>70.9045 -26.1998 -5.0169 0 -0 2.7578</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>70.9045 -26.1998 -5.0169 0 -0 2.7578</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_24'>
+        <pose>-472.895 322.566 15.2613 0 -0 0.6822</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-472.895 322.566 15.2613 0 -0 0.6822</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_25'>
+        <pose>170.262 -216.256 -9.6573 0 -0 0.677</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>170.262 -216.256 -9.6573 0 -0 0.677</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_26'>
+        <pose>411.235 -266.692 -22.5789 0 -0 -1.06949</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>411.235 -266.692 -22.5789 0 -0 -1.06949</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_27'>
+        <pose>304.712 -180.762 -17.4524 0 -0 1.6083</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>304.712 -180.762 -17.4524 0 -0 1.6083</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_28'>
+        <pose>431.037 -331.547 -21.5335 0 -0 -0.680585</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>431.037 -331.547 -21.5335 0 -0 -0.680585</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_29'>
+        <pose>245.754 386.329 7.0242 0 -0 -1.43249</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>245.754 386.329 7.0242 0 -0 -1.43249</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_30'>
+        <pose>159.805 -124.889 -11.1092 0 -0 -0.396985</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>159.805 -124.889 -11.1092 0 -0 -0.396985</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_31'>
+        <pose>-256.055 -372.918 0.979 0 -0 -2.51719</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-256.055 -372.918 0.979 0 -0 -2.51719</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_32'>
+        <pose>370.262 -300.085 -20.0078 0 -0 -3.13699</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>370.262 -300.085 -20.0078 0 -0 -3.13699</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_33'>
+        <pose>-352.014 -480.495 -0.911 0 -0 0.7655</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-352.014 -480.495 -0.911 0 -0 0.7655</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_34'>
+        <pose>-101.246 -196.766 3.7341 0 -0 1.7998</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-101.246 -196.766 3.7341 0 -0 1.7998</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_35'>
+        <pose>419.931 -469.697 -17.2579 0 -0 0.8818</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>419.931 -469.697 -17.2579 0 -0 0.8818</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_36'>
+        <pose>-79.957 460.905 10.9138 0 -0 2.9366</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-79.957 460.905 10.9138 0 -0 2.9366</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_37'>
+        <pose>281.494 -476.639 -14.1994 0 -0 1.4617</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>281.494 -476.639 -14.1994 0 -0 1.4617</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_38'>
+        <pose>30.4163 104.81 1.8742 0 -0 -2.18698</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>30.4163 104.81 1.8742 0 -0 -2.18698</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_39'>
+        <pose>363.271 -45.5682 -16.788 0 -0 -1.15248</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>363.271 -45.5682 -16.788 0 -0 -1.15248</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_40'>
+        <pose>-390.19 -428.474 2.1446 0 -0 1.9499</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-390.19 -428.474 2.1446 0 -0 1.9499</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_41'>
+        <pose>-352.039 416.161 7.6081 0 -0 0.7256</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-352.039 416.161 7.6081 0 -0 0.7256</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_42'>
+        <pose>178.64 -105.145 -9.8698 0 -0 -0.935385</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>178.64 -105.145 -9.8698 0 -0 -0.935385</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_43'>
+        <pose>-451.283 -314.85 3.5485 0 -0 2.6155</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-451.283 -314.85 3.5485 0 -0 2.6155</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_44'>
+        <pose>-445.571 -124.932 8.1393 0 -0 0.3265</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-445.571 -124.932 8.1393 0 -0 0.3265</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_45'>
+        <pose>419.964 -396.293 -18.9528 0 -0 -1.24388</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>419.964 -396.293 -18.9528 0 -0 -1.24388</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_46'>
+        <pose>276.269 140.861 -22.0758 0 -0 -3.05219</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>276.269 140.861 -22.0758 0 -0 -3.05219</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_47'>
+        <pose>353.467 -36.7676 -13.0945 0 -0 0.8782</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>353.467 -36.7676 -13.0945 0 -0 0.8782</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_48'>
+        <pose>-21.8687 -82.1523 -0.0756 0 -0 2.0577</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-21.8687 -82.1523 -0.0756 0 -0 2.0577</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_49'>
+        <pose>-119.152 183.626 5.939 0 -0 3.0216</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-119.152 183.626 5.939 0 -0 3.0216</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_50'>
+        <pose>-169.668 35.0368 5.2347 0 -0 -2.93599</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-169.668 35.0368 5.2347 0 -0 -2.93599</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_51'>
+        <pose>131.392 -209.413 -9.189 0 -0 -0.875085</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>131.392 -209.413 -9.189 0 -0 -0.875085</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_52'>
+        <pose>-363.673 113.079 9.122 0 -0 -0.402485</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-363.673 113.079 9.122 0 -0 -0.402485</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_53'>
+        <pose>-358.429 453.637 10.1468 0 -0 -1.28729</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-358.429 453.637 10.1468 0 -0 -1.28729</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_54'>
+        <pose>440.906 -243.787 -23.3671 0 -0 1.0763</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>440.906 -243.787 -23.3671 0 -0 1.0763</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_55'>
+        <pose>64.2049 71.6092 1.3106 0 -0 -1.26138</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>64.2049 71.6092 1.3106 0 -0 -1.26138</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_56'>
+        <pose>-7.7567 98.4614 2.0794 0 -0 0.5511</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-7.7567 98.4614 2.0794 0 -0 0.5511</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_57'>
+        <pose>156.051 -80.453 -8.1343 0 -0 -0.638585</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>156.051 -80.453 -8.1343 0 -0 -0.638585</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_58'>
+        <pose>259.518 -226.832 -12.7711 0 -0 0.9286</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>259.518 -226.832 -12.7711 0 -0 0.9286</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_59'>
+        <pose>431.12 -61.3781 -19.2485 0 -0 -0.401285</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>431.12 -61.3781 -19.2485 0 -0 -0.401285</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_60'>
+        <pose>277.083 -20.387 -7.8353 0 -0 -0.306685</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>277.083 -20.387 -7.8353 0 -0 -0.306685</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_61'>
+        <pose>-377.141 346.53 11.6358 0 -0 -1.97229</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-377.141 346.53 11.6358 0 -0 -1.97229</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_62'>
+        <pose>-482.098 -45.1519 11.874 0 -0 2.7791</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-482.098 -45.1519 11.874 0 -0 2.7791</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='martian_rock_63'>
+        <pose>-195.798 413.662 5.2134 0 -0 -0.758985</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-195.798 413.662 5.2134 0 -0 -0.758985</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='robhar_2'>
+        <pose>0.118868 -0.067232 1.2646 -0.012504 0.062328 -0.231596</pose>
+        <scale>1 1 1</scale>
+        <link name='base_footprint'>
+          <pose>0.118868 -0.067232 1.2646 -0.012504 0.062328 -0.231596</pose>
+          <velocity>2e-05 -5e-06 -9e-06 -0.00025 0.000605 0.00018</velocity>
+          <acceleration>0.056702 -0.009194 -0.019484 -0.560432 0.921807 0.102897</acceleration>
+          <wrench>0.472694 -0.076643 -0.16243 0 -0 0</wrench>
+        </link>
+        <link name='wheel_fl'>
+          <pose>0.43656 0.116291 1.37003 -0.02118 0.940656 -0.247931</pose>
+          <velocity>5.6e-05 8.4e-05 -0.000252 -4.4e-05 0.000558 0.000216</velocity>
+          <acceleration>0.010771 0.010418 -0.360325 0.492894 0.243101 0.313762</acceleration>
+          <wrench>0.008617 0.008335 -0.28826 0 -0 0</wrench>
+        </link>
+        <link name='wheel_fr'>
+          <pose>0.322182 -0.370411 1.37627 -0.015325 0.6198 -0.239722</pose>
+          <velocity>0.000151 4.7e-05 -5.7e-05 -0.00036 0.001318 0.000299</velocity>
+          <acceleration>0.041566 -0.002168 -0.053819 -0.022644 0.468759 0.254678</acceleration>
+          <wrench>0.033252 -0.001735 -0.043055 0 -0 0</wrench>
+        </link>
+        <link name='wheel_rl'>
+          <pose>-0.068574 0.235415 1.40242 -0.014109 0.484838 -0.237394</pose>
+          <velocity>4.7e-05 6e-06 3.2e-05 -4.5e-05 0.00028 0.000204</velocity>
+          <acceleration>0.029815 -0.027466 0.052312 0.1475 0.317702 -0.288833</acceleration>
+          <wrench>0.023852 -0.021973 0.041849 0 -0 0</wrench>
+        </link>
+        <link name='wheel_rr'>
+          <pose>-0.182951 -0.251286 1.40866 -3.06405 1.40899 2.98731</pose>
+          <velocity>0.00014 -2.4e-05 0.000219 -0.000249 0.000604 0.00018</velocity>
+          <acceleration>0.03646 -0.049817 0.31129 -0.478864 0.890674 0.084811</acceleration>
+          <wrench>0.029168 -0.039854 0.249032 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <model name='robhar_2'>
+      <link name='base_footprint'>
+        <inertial>
+          <pose>0.004641 -0 0.183866 0 -0 0</pose>
+          <mass>8.33645</mass>
+          <inertia>
+            <ixx>0.140058</ixx>
+            <ixy>-4.12779e-16</ixy>
+            <ixz>-0.00275232</ixz>
+            <iyy>0.286254</iyy>
+            <iyz>-3.51647e-16</iyz>
+            <izz>0.372113</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_footprint_fixed_joint_lump__base_link_collision'>
+          <pose>0 0 0.18 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.4 0.12</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_footprint_fixed_joint_lump__base_link_visual'>
+          <pose>0 0 0.18 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robhar_2/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_footprint_fixed_joint_lump__camera_left_visual_1'>
+          <pose>0.275 0.155 0.255 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robhar_2/meshes/camera_left.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/DarkGrey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_footprint_fixed_joint_lump__camera_right_visual_2'>
+          <pose>0.275 -0.155 0.255 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robhar_2/meshes/camera_right.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/DarkGrey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_footprint_fixed_joint_lump__lidar_level_visual_3'>
+          <pose>0 0 0.24 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robhar_2/meshes/lidar_level.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/DarkGrey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <sensor name='imu_sensor' type='imu'>
+          <always_on>1</always_on>
+          <visualize>0</visualize>
+          <update_rate>100</update_rate>
+          <plugin name='imu_plugin' filename='libgazebo_ros_imu_sensor.so'>
+            <ros>
+              <remapping>~/out:=imu</remapping>
+            </ros>
+            <initial_orientation_as_reference>0</initial_orientation_as_reference>
+            <frame_name>base_link</frame_name>
+          </plugin>
+          <pose>0 0 0.18 0 -0 0</pose>
+          <imu/>
+        </sensor>
+        <sensor name='rgb_camera' type='camera'>
+          <always_on>1</always_on>
+          <visualize>0</visualize>
+          <update_rate>15</update_rate>
+          <camera>
+            <horizontal_fov>1.3963</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.05</near>
+              <far>50</far>
+            </clip>
+          </camera>
+          <plugin name='rgb_camera_plugin' filename='libgazebo_ros_camera.so'>
+            <camera_name>camera</camera_name>
+            <frame_name>camera_left_lens</frame_name>
+          </plugin>
+          <pose>0.3 0.155 0.255 0 -0 0</pose>
+        </sensor>
+        <sensor name='lidar_level' type='ray'>
+          <always_on>1</always_on>
+          <visualize>0</visualize>
+          <update_rate>10</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>360</samples>
+                <resolution>1</resolution>
+                <min_angle>-3.14159</min_angle>
+                <max_angle>3.14159</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>12</max>
+              <resolution>0.01</resolution>
+            </range>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.01</stddev>
+            </noise>
+          </ray>
+          <plugin name='lidar_level_plugin' filename='libgazebo_ros_ray_sensor.so'>
+            <ros>
+              <remapping>~/out:=scan</remapping>
+            </ros>
+            <output_type>sensor_msgs/LaserScan</output_type>
+            <frame_name>lidar_level_scan</frame_name>
+          </plugin>
+          <pose>0 0 0.24 0 -0 0</pose>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_fl_joint' type='revolute'>
+        <pose relative_to='base_footprint'>0.26 0.25 0.125 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>wheel_fl</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0.01</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_fl'>
+        <pose relative_to='wheel_fl_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 1.5e-05 -0 0 -0 0</pose>
+          <mass>0.8</mass>
+          <inertia>
+            <ixx>0.00379167</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00625</iyy>
+            <iyz>0</iyz>
+            <izz>0.00379167</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_fl_collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.1</length>
+              <radius>0.125</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>0.8</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_fl_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robhar_2/meshes/wheel_fl.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_fr_joint' type='revolute'>
+        <pose relative_to='base_footprint'>0.26 -0.25 0.125 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>wheel_fr</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0.01</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_fr'>
+        <pose relative_to='wheel_fr_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 -1.5e-05 -0 0 -0 0</pose>
+          <mass>0.8</mass>
+          <inertia>
+            <ixx>0.00379167</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00625</iyy>
+            <iyz>0</iyz>
+            <izz>0.00379167</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_fr_collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.1</length>
+              <radius>0.125</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>0.8</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_fr_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robhar_2/meshes/wheel_fr.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_rl_joint' type='revolute'>
+        <pose relative_to='base_footprint'>-0.26 0.25 0.125 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>wheel_rl</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0.01</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_rl'>
+        <pose relative_to='wheel_rl_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 1.5e-05 0 0 -0 0</pose>
+          <mass>0.8</mass>
+          <inertia>
+            <ixx>0.00379167</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00625</iyy>
+            <iyz>0</iyz>
+            <izz>0.00379167</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_rl_collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.1</length>
+              <radius>0.125</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>0.8</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_rl_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robhar_2/meshes/wheel_rl.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_rr_joint' type='revolute'>
+        <pose relative_to='base_footprint'>-0.26 -0.25 0.125 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>wheel_rr</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>0.01</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_rr'>
+        <pose relative_to='wheel_rr_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 -1.5e-05 0 0 -0 0</pose>
+          <mass>0.8</mass>
+          <inertia>
+            <ixx>0.00379167</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00625</iyy>
+            <iyz>0</iyz>
+            <izz>0.00379167</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_rr_collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.1</length>
+              <radius>0.125</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>0.8</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_rr_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robhar_2/meshes/wheel_rr.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <plugin name='robhar_drive' filename='libgazebo_ros_diff_drive.so'>
+        <update_rate>50</update_rate>
+        <num_wheel_pairs>2</num_wheel_pairs>
+        <left_joint>wheel_fl_joint</left_joint>
+        <right_joint>wheel_fr_joint</right_joint>
+        <left_joint>wheel_rl_joint</left_joint>
+        <right_joint>wheel_rr_joint</right_joint>
+        <wheel_separation>0.5</wheel_separation>
+        <wheel_separation>0.5</wheel_separation>
+        <wheel_diameter>0.25</wheel_diameter>
+        <wheel_diameter>0.25</wheel_diameter>
+        <max_wheel_torque>10</max_wheel_torque>
+        <max_wheel_acceleration>2.0</max_wheel_acceleration>
+        <command_topic>cmd_vel</command_topic>
+        <publish_odom>1</publish_odom>
+        <publish_odom_tf>1</publish_odom_tf>
+        <publish_wheel_tf>0</publish_wheel_tf>
+        <odometry_topic>odom</odometry_topic>
+        <odometry_frame>odom</odometry_frame>
+        <robot_base_frame>base_footprint</robot_base_frame>
+        <odometry_source>1</odometry_source>
+      </plugin>
+      <static>0</static>
+      <plugin name='joint_states' filename='libgazebo_ros_joint_state_publisher.so'>
+        <update_rate>30</update_rate>
+        <joint_name>wheel_fl_joint</joint_name>
+        <joint_name>wheel_fr_joint</joint_name>
+        <joint_name>wheel_rl_joint</joint_name>
+        <joint_name>wheel_rr_joint</joint_name>
+      </plugin>
+      <pose>0 0 0.5 0 -0 0</pose>
+    </model>
+  </world>
+</sdf>
